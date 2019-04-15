@@ -1,4 +1,4 @@
-# Replace dynamic `import()` with `require()` at runtime
+# Replace dynamic `import()` with a custom function call.
 
 `babel-plugin-replace-dynamic-import`
 
