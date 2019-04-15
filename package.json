@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-replace-dynamic-import",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Babel plugin to replace import() with a custom function call",
   "main": "build/index.js",
   "scripts": {
