@@ -1,8 +1,8 @@
 # Replace dynamic `import()` with `require()` at runtime
 
-`babel-plugin-replace-dynamic-import-runtime`
+`babel-plugin-replace-dynamic-import`
 
-Babel plugin to replace `import(...)` with `require(...)` at runtime, for node _(also works with `await import(...)`)_
+Babel plugin to replace `import(...)` with a custom function call. By default it is `__import__()`.
 
 ## Use case
 
@@ -16,9 +16,9 @@ So statements like:
 const someDynamicImport = import('../path/to/your/module');
 ...
 ```
-into a require statement that `node` can understand:
+into a function call
 ```javascript
-const someDynamicImport = require('../path/to/your/module');
+const someDynamicImport = __import__('../path/to/your/module');
 ```
 
 
@@ -27,7 +27,7 @@ _**NOTE:** Babylon >= v6.12.0 is required to correct parse dynamic imports._
 ## Installation
 
 ```sh
-yarn add babel-plugin-replace-dynamic-import-runtime --dev
+yarn add babel-plugin-replace-dynamic-import --dev
 ```
 
 ## Usage
@@ -38,20 +38,24 @@ yarn add babel-plugin-replace-dynamic-import-runtime --dev
 
 ```json
 {
-  "plugins": ["replace-dynamic-import-runtime"]
+  "plugins": ["replace-dynamic-import"]
 }
 ```
 
 ### Via CLI
 
 ```sh
-$ babel --plugins replace-dynamic-import-runtime script.js
+$ babel --plugins replace-dynamic-import script.js
 ```
 
 ### Via Node API
 
 ```javascript
 require('babel-core').transform('code', {
-  plugins: ['replace-dynamic-import-runtime']
+  plugins: ['replace-dynamic-import']
 });
 ```
+
+## Options
+
+- `by`: the identifier to replace `import` with. Defaults to `__import__`

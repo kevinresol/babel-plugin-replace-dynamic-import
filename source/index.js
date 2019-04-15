@@ -3,7 +3,6 @@ import dynamicImportSyntax from 'babel-plugin-syntax-dynamic-import';
 import * as types from 'babel-types';
 
 const IMPORT = 'Import';
-const AWAIT = 'AwaitExpression';
 const CALL = 'CallExpression';
 
 const generateSourceNode = node => {
@@ -23,26 +22,16 @@ const generateSourceNode = node => {
 
 
 
-const buildImport = babelTemplate(`
-  require(sourcePath)
-`);
-
 export default () => ({
   inherits: dynamicImportSyntax,
   visitor: {
     Program: {
-      enter(path) {
+      enter(path, state) {
         path.traverse({
-          [AWAIT]: path => {
-            if (path.node.argument.type === CALL && path.node.argument.callee.type === IMPORT) {
-              const sourcePath = generateSourceNode(path.node.argument.arguments);
-              path.replaceWith(buildImport({ sourcePath }));
-            }
-          },
           [CALL]: path => {
             if (path.node.callee.type === IMPORT) {
               const sourcePath = generateSourceNode(path.node.arguments);
-              path.replaceWith(buildImport({ sourcePath }));
+              path.replaceWith(babelTemplate(`${state.opts.by || '__import__'}(sourcePath)`)({ sourcePath }));
             }
           },
         });

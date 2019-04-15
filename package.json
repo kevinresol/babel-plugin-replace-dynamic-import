@@ -1,7 +1,7 @@
 {
-  "name": "babel-plugin-replace-dynamic-import-runtime",
-  "version": "1.0.2",
-  "description": "Babel plugin to replace import() with require() at runtime, for node Edit",
+  "name": "babel-plugin-replace-dynamic-import",
+  "version": "1.0.0",
+  "description": "Babel plugin to replace import() with a custom function call",
   "main": "build/index.js",
   "scripts": {
     "start": "npm run build:simple",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JoinColony/babel-plugin-replace-dynamic-import-runtime.git"
+    "url": "git+https://github.com/kevinresol/babel-plugin-replace-dynamic-import.git"
   },
   "keywords": [
     "babel",
@@ -20,12 +20,12 @@
     "code-splitting",
     "node"
   ],
-  "author": "Raul Glogovetan <raul@colony.io> (https://colony.io)",
+  "author": "Kevin Leung <kevinresol@gmail.com> (https://github.com/kevinresol)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/JoinColony/babel-plugin-replace-dynamic-import-runtime/issues"
+    "url": "https://github.com/kevinresol/babel-plugin-replace-dynamic-import/issues"
   },
-  "homepage": "https://github.com/JoinColony/babel-plugin-replace-dynamic-import-runtime#readme",
+  "homepage": "https://github.com/kevinresol/babel-plugin-replace-dynamic-import#readme",
   "dependencies": {
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "babel-template": "^6.24.1",
